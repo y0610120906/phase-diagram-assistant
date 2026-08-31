@@ -1,0 +1,106 @@
+{
+  "system": "Fe-C",
+  "description": "铁碳二元相图 - 亚稳系（Fe-Fe₃C）",
+  "components": ["Fe", "C"],
+  "temperature_range": [0, 1600],
+  "composition_range": [0, 6.69],
+  "invariant_reactions": [
+    {
+      "type": "peritectic",
+      "name": "包晶反应",
+      "temperature": 1495,
+      "composition_C": 0.17,
+      "reaction": "L(0.53%C) + δ(0.09%C) → γ(0.17%C)",
+      "product": "奥氏体 γ",
+      "phase_rule": "F = 2 - 3 + 1 = 0"
+    },
+    {
+      "type": "eutectic",
+      "name": "共晶反应",
+      "temperature": 1148,
+      "composition_C": 4.30,
+      "reaction": "L(4.30%C) → γ(2.11%C) + Fe₃C(6.69%C)",
+      "product": "莱氏体 (Ledeburite)",
+      "phase_rule": "F = 2 - 3 + 1 = 0"
+    },
+    {
+      "type": "eutectoid",
+      "name": "共析反应",
+      "temperature": 727,
+      "composition_C": 0.77,
+      "reaction": "γ(0.77%C) → α(0.0218%C) + Fe₃C(6.69%C)",
+      "product": "珠光体 (Pearlite)",
+      "phase_rule": "F = 2 - 3 + 1 = 0"
+    }
+  ],
+  "critical_points": [
+    {"symbol": "A1", "temperature": 727, "description": "共析线，γ → α + Fe₃C"},
+    {"symbol": "A3", "temperature_range": [727, 912], "description": "γ → α 开始转变线（亚共析钢）"},
+    {"symbol": "Acm", "temperature_range": [727, 1148], "description": "γ → Fe₃C 开始析出线（过共析钢）"},
+    {"symbol": "A2", "temperature": 768, "description": "铁磁性转变温度（居里点）"},
+    {"symbol": "A4", "temperature": 1394, "description": "γ → δ 转变温度"}
+  ],
+  "phase_boundaries": [
+    {
+      "name": "liquidus",
+      "description": "液相线，以上全为液相",
+      "points": [
+        [0, 1538],
+        [0.53, 1495],
+        [2.11, 1148],
+        [4.30, 1148],
+        [6.69, 1250]
+      ]
+    },
+    {
+      "name": "solidus",
+      "description": "固相线，以下全为固相",
+      "points": [
+        [0, 1538],
+        [0.09, 1394],
+        [0.17, 1495],
+        [2.11, 1148],
+        [4.30, 1148],
+        [6.69, 1250]
+      ]
+    }
+  ],
+  "single_phase_regions": [
+    {"phase": "L", "name": "液相", "crystal_structure": "无定形"},
+    {"phase": "δ", "name": "δ-铁素体", "crystal_structure": "BCC", "composition_range_C": [0, 0.09], "temperature_range": [1394, 1538]},
+    {"phase": "γ", "name": "奥氏体 Austenite", "crystal_structure": "FCC", "max_C_solubility": 2.11},
+    {"phase": "α", "name": "铁素体 Ferrite", "crystal_structure": "BCC", "max_C_solubility": 0.0218},
+    {"phase": "Fe₃C", "name": "渗碳体 Cementite", "crystal_structure": "正交晶系", "composition_C": 6.69}
+  ],
+  "two_phase_regions": [
+    {"phases": "L + δ", "description": "液相与δ-铁素体共存"},
+    {"phases": "L + γ", "description": "液相与奥氏体共存"},
+    {"phases": "L + Fe₃C", "description": "液相与渗碳体共存（高碳侧）"},
+    {"phases": "δ + γ", "description": "δ-铁素体与奥氏体共存"},
+    {"phases": "γ + α", "description": "奥氏体与铁素体共存（亚共析钢A3线以下A1线以上）"},
+    {"phases": "γ + Fe₃C", "description": "奥氏体与渗碳体共存（过共析钢Acm线以下A1线以上）"},
+    {"phases": "α + Fe₃C", "description": "铁素体与渗碳体共存（室温组织）"}
+  ],
+  "steel_classification": [
+    {"type": "亚共析钢", "C_range": [0.0218, 0.77], "room_microstructure": "先共析铁素体 + 珠光体"},
+    {"type": "共析钢", "C_range": [0.77, 0.77], "room_microstructure": "100% 珠光体"},
+    {"type": "过共析钢", "C_range": [0.77, 2.11], "room_microstructure": "珠光体 + 二次渗碳体(网状)"},
+    {"type": "亚共晶白口铸铁", "C_range": [2.11, 4.30], "room_microstructure": "珠光体 + 二次渗碳体 + 莱氏体"},
+    {"type": "共晶白口铸铁", "C_range": [4.30, 4.30], "room_microstructure": "莱氏体"},
+    {"type": "过共晶白口铸铁", "C_range": [4.30, 6.69], "room_microstructure": "一次渗碳体(板条状) + 莱氏体"}
+  ],
+  "key_compositions": {
+    "max_solubility_C_in_alpha": 0.0218,
+    "eutectoid_composition": 0.77,
+    "max_solubility_C_in_gamma": 2.11,
+    "eutectic_composition": 4.30,
+    "cementite_composition": 6.69
+  },
+  "common_misconceptions": [
+    "混淆共晶(1148°C)和共析(727°C)的温度",
+    "混淆'相'和'组织'的概念——相是均匀的物理化学状态，组织是相的特定排列形态",
+    "杠杆定律计算的是相对量(百分比)，不是绝对量(kg)",
+    "共析温度以下，珠光体中的铁素体和渗碳体仍分别算作独立的'相'",
+    "亚共析钢中先共析铁素体和珠光体中的铁素体是同一个'相'(α)，但是不同的'组织'"
+  ]
+}

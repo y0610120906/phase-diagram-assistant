@@ -1,0 +1,22 @@
+﻿node_modules/
+.npm-cache/
+
+# local secrets and environments
+.env
+backend/.env
+.venv/
+backend/.venv/
+
+# generated output
+dist/
+dist-electron/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# local claude settings and bootstrap artifacts
+.claude/
+get-pip.py
