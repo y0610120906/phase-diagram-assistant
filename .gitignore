@@ -20,3 +20,8 @@ __pycache__/
 # local claude settings and bootstrap artifacts
 .claude/
 get-pip.py
+
+# runtime data (never commit)
+backend/storage/
+*.sqlite3
+
